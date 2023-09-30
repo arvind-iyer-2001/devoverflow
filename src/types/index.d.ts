@@ -51,3 +51,22 @@ export type Filter = {
   name: string;
   value: string;
 };
+
+export type QuestionTag = { _id: string; name: string };
+
+export type Author = {
+  _id: string;
+  name: string;
+  picture: string;
+};
+
+export type QuestionCardProps = {
+  _id: string;
+  title: string;
+  tags: QuestionTag[];
+  author: Author;
+  upvotes: number;
+  views: number;
+  answers: Array<object>;
+  createdAt: Date;
+};

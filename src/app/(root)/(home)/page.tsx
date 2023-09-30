@@ -1,6 +1,8 @@
-import BadgeFilters from "@/components/shared/search/BadgeFilters";
-import LocalSearch from "@/components/shared/search/LocalSearch";
-import SearchFilter from "@/components/shared/search/SearchFilter";
+import QuestionCard from "@/components/Cards/QuestionCard";
+import NoResult from "@/components/shared/NoResult";
+import BadgeFilters from "@/components/shared/Search/BadgeFilters";
+import LocalSearch from "@/components/shared/Search/LocalSearch";
+import SearchFilter from "@/components/shared/Search/SearchFilter";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
 import Link from "next/link";
@@ -45,7 +47,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="flex w-full flex-col-reverse justify-around gap-4 sm:flex-row sm:items-center">
+      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <div className="text-center">
           <h1 className="h1-bold text-dark100_light900">All Questions</h1>
         </div>
@@ -73,10 +75,19 @@ const HomePage = () => {
           containerClasses="hidden md:flex"
         />
       </div>
-      <div>
-        {questions.map((item) => {
-          return <div key={item._id}>{item.title}</div>;
-        })}
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {questions.length > 0 ? (
+          questions.map((question) => (
+            <QuestionCard key={question._id} {...question} />
+          ))
+        ) : (
+          <NoResult
+            title="There’s no question to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the discussion. our query could be the next big thing others learn from. Get involved! 💡"
+            link="/ask-question"
+            linkTitle="Ask a Question"
+          />
+        )}
       </div>
     </div>
   );

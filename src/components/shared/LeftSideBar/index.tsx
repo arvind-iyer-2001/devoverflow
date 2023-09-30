@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { sidebarLinks } from "@/constants";
+import { cn } from "@/lib/utils";
 import { SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,11 +25,12 @@ const LeftSidebar = () => {
             <Link
               href={item.route}
               key={item.label}
-              className={`${
+              className={cn(
                 isActive
                   ? "primary-gradient rounded-lg text-light-900"
-                  : "text-dark300_light900"
-              }  flex items-center justify-start gap-4 bg-transparent p-4`}
+                  : "text-dark300_light900",
+                "flex items-center justify-start gap-4 bg-transparent p-4"
+              )}
             >
               <Image
                 src={item.imgURL}

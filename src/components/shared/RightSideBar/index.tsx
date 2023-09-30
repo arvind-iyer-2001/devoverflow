@@ -1,6 +1,6 @@
+import RenderTag from "@/components/shared/RenderTag";
 import Image from "next/image";
 import Link from "next/link";
-import RenderTag from "./RenderTag";
 
 const hotQuestions = [
   { _id: 1, title: "How do I use express as a custom server in NextJS?" },
@@ -15,11 +15,11 @@ const hotQuestions = [
 ];
 
 const popularTags = [
-  { _id: 1, name: "javascript", totalQuestions: 5 },
-  { _id: 2, name: "react", totalQuestions: 5 },
-  { _id: 3, name: "next", totalQuestions: 5 },
-  { _id: 4, name: "vue", totalQuestions: 2 },
-  { _id: 5, name: "redux", totalQuestions: 10 },
+  { _id: "1", name: "javascript", totalQuestions: 5 },
+  { _id: "2", name: "react", totalQuestions: 5 },
+  { _id: "3", name: "next", totalQuestions: 5 },
+  { _id: "4", name: "vue", totalQuestions: 2 },
+  { _id: "5", name: "redux", totalQuestions: 10 },
 ];
 
 const RightSidebar = () => {
