@@ -47,7 +47,6 @@ const QuestionForm = ({ mongoUserId }: { mongoUserId: string }) => {
     try {
       // make an async call to your API -> create a question
       // contain all form data
-      console.log(values);
       await createQuestion({
         title: values.title,
         content: values.explanation,

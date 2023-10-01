@@ -1,0 +1,4 @@
+# .eslintignore
+
+# Ignore ESLint for the ui components directory
+src/components/ui/**

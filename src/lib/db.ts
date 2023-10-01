@@ -9,15 +9,15 @@ export const connectToDatabase = async () => {
     throw Error("MISSING MONGODB_URI in environment");
   }
   if (isConnected) {
-    console.log("MongoDB is already connected", mongoose.models);
+    console.log("MongoDB is already connected");
     return mongoose;
   }
   try {
-    const db = await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect(process.env.MONGODB_URI, {
       dbName: "devflow",
     });
     isConnected = true;
-    console.log("MongoDB is connected", db.models);
+    console.log("MongoDB is connected");
     return mongoose;
   } catch (err) {
     console.log("MongoDB Connection Failed", err);

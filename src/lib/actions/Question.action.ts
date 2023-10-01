@@ -10,7 +10,6 @@ import { CreateQuestionParams, GetQuestionsParams } from "./shared.types";
 
 export async function getQuestions(params: GetQuestionsParams) {
   try {
-    console.log(params);
     connectToDatabase();
 
     const questions: IQuestion[] = await Question.find({})
