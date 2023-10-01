@@ -3,6 +3,7 @@
 import Question, { IQuestion } from "@/database/Question.model";
 import Tag from "@/database/Tag.model";
 import User from "@/database/User.model";
+import { QuestionProps } from "@/types/questions";
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../db";
 import { CreateQuestionParams, GetQuestionsParams } from "./shared.types";
@@ -17,7 +18,27 @@ export async function getQuestions(params: GetQuestionsParams) {
       .populate({ path: "author", model: User })
       .sort({ createdAt: -1 });
 
-    return { questions };
+    const formattedQuestions: QuestionProps[] = questions.map((question) => ({
+      _id: question._id.toString(),
+      title: question.title,
+      tags: question.tags.map((tag) => ({
+        _id: tag._id.toString(),
+        name: tag.name, // Assuming 'name' exists on your ITag interface
+      })),
+      author: {
+        _id: question.author._id.toString(),
+        name: question.author.name, // Assuming 'name' exists on your IUser interface
+        picture: question.author.picture, // Assuming 'picture' exists on your IUser interface
+      },
+      upvotes: question.upvotes.length,
+      views: question.views,
+      answers: question.answers.map((answer) => ({
+        /* your answer object formatting here */
+      })),
+      createdAt: question.createdAt,
+    }));
+
+    return { questions: formattedQuestions };
   } catch (error) {
     console.log(error);
     throw error;

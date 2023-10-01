@@ -7,26 +7,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
+import { QuestionProps } from "@/types/questions";
 import Link from "next/link";
 import Metric from "../shared/Metric";
-
-interface QuestionProps {
-  _id: string;
-  title: string;
-  tags: {
-    _id: string;
-    name: string;
-  }[];
-  author: {
-    _id: string;
-    name: string;
-    picture: string;
-  };
-  upvotes: number;
-  views: number;
-  answers: Array<object>;
-  createdAt: Date;
-}
 
 const QuestionCard = ({
   _id,

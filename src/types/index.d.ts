@@ -59,14 +59,3 @@ export type Author = {
   name: string;
   picture: string;
 };
-
-export type QuestionCardProps = {
-  _id: string;
-  title: string;
-  tags: QuestionTag[];
-  author: Author;
-  upvotes: number;
-  views: number;
-  answers: Array<object>;
-  createdAt: Date;
-};

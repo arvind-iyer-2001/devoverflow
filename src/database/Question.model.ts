@@ -1,13 +1,15 @@
-import { Document, Model, Schema, model, models } from "mongoose";
+import { Document, Model, PopulatedDoc, Schema, model, models } from "mongoose";
+import { ITag } from "./Tag.model";
+import { IUser } from "./User.model";
 
 export interface IQuestion extends Document {
   title: string;
   content: string;
-  tags: Schema.Types.ObjectId[];
+  tags: PopulatedDoc<ITag & Document>[];
   views: number;
-  upvotes: Schema.Types.ObjectId[];
-  downvotes: Schema.Types.ObjectId[];
-  author: Schema.Types.ObjectId;
+  upvotes: PopulatedDoc<IUser & Document>[];
+  downvotes: PopulatedDoc<IUser & Document>[];
+  author: PopulatedDoc<IUser & Document>;
   answers: Schema.Types.ObjectId[];
   createdAt: Date;
 }
