@@ -7,3 +7,7 @@ export const QuestionFormSchema = z.object({
 });
 
 export const Tag = z.object({});
+
+export const AnswerFormSchema = z.object({
+  answer: z.string().min(30),
+});

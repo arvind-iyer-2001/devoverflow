@@ -1,12 +1,13 @@
 "use server";
 
 import Question from "@/database/Question.model";
-import User, { IUser } from "@/database/User.model";
+import User from "@/database/User.model";
 import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../db";
 import {
   CreateUserParams,
   DeleteUserParams,
+  GetAllUsersParams,
   UpdateUserParams,
 } from "./shared.types";
 
@@ -18,7 +19,7 @@ export async function getUserById(params: any) {
 
     const user = await User.findOne({ clerkId: userId });
 
-    return user as IUser;
+    return user;
   } catch (error) {
     console.log(error);
     throw error;
@@ -86,3 +87,27 @@ export async function deleteUser(params: DeleteUserParams) {
     throw error;
   }
 }
+
+export async function getAllUsers(params: GetAllUsersParams) {
+  try {
+    connectToDatabase();
+
+    // const { page = 1, pageSize = 20, filter, searchQuery } = params;
+
+    const users = await User.find({}).sort({ createdAt: -1 });
+
+    return { users };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+// export async function getAllUsers(params: GetAllUsersParams) {
+//   try {
+//     connectToDatabase();
+//   } catch (error) {
+//     console.log(error);
+//     throw error;
+//   }
+// }
