@@ -16,18 +16,19 @@ const TagCard = async ({ tag }: Props) => {
   return (
     <Link
       href={`/tags/${tag._id}`}
-      className="shadow-light100_darknone w-full max-xs:min-w-full xs:w-[260px]"
+      className="shadow-light100_darknone w-full max-xs:min-w-full xs:w-[240px]"
     >
-      <article className="background-light900_dark200 light-border flex w-full flex-col rounded-2xl border p-8">
+      <div className="background-light900_dark200 light-border flex w-full flex-col rounded-2xl border px-5 py-7">
         <RenderTag
           key={tag._id}
           _id={tag._id}
           name={tag.name}
-          variant="outline"
+          variant="title"
+          disableLink={true}
         />
 
-        <div className="mt-4">
-          <p className="body-regular text-dark500_light500 mt-2">
+        <div className="mt-3">
+          <p className="body-regular text-dark500_light500 mt-2 line-clamp-4">
             {tag.description}
           </p>
         </div>
@@ -38,7 +39,7 @@ const TagCard = async ({ tag }: Props) => {
             Questions
           </p>
         </div>
-      </article>
+      </div>
     </Link>
   );
 };

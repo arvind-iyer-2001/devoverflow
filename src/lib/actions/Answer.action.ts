@@ -7,7 +7,12 @@ import { CreateAnswerParams, GetAnswersParams } from "./shared.types";
 export async function getAnswers(params: GetAnswersParams) {
   try {
     connectToDatabase();
-    const answers = await Answer.find({ question: params.questionId });
+
+    const { questionId } = params;
+
+    const answers = await Answer.find({ question: questionId })
+      .populate("author", "_id clerkId name picture")
+      .sort({ createdAt: -1 });
 
     return { answers };
   } catch (error) {

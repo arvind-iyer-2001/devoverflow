@@ -5,9 +5,10 @@ import Image from "next/image";
 type Props = {
   questionId: string;
   answerId?: string;
-  mongoUserId?: string;
+  userId?: string;
   upvotes: string[];
   downvotes: string[];
+  isSaved?: boolean;
 };
 
 const ActionBar = ({
@@ -15,11 +16,11 @@ const ActionBar = ({
   upvotes,
   downvotes,
   answerId,
-  mongoUserId,
+  userId,
+  isSaved,
 }: Props) => {
-  const isUpvoted = true; // answerId upvotes.includes(mongoUserId);
-  const isDownvoted = false; // downvotes.includes(mongoUserId);
-  const isSaved = true; // check if mongoUser has questionId
+  const isUpvoted = true; // upvotes.includes(userId);
+  const isDownvoted = false; // downvotes.includes(userId);
 
   async function handleUpvote() {
     //
@@ -64,16 +65,20 @@ const ActionBar = ({
       <Badge>{downvotes.length}</Badge>
 
       {/* Save  */}
-      <Button onClick={handleSave}>
-        <Image
-          src={
-            isSaved ? "/assets/icons/star-filled.svg" : "/assets/icons/star.svg"
-          }
-          alt="save"
-          width={20}
-          height={20}
-        />
-      </Button>
+      {isSaved ?? (
+        <Button onClick={handleSave}>
+          <Image
+            src={
+              isSaved
+                ? "/assets/icons/star-filled.svg"
+                : "/assets/icons/star.svg"
+            }
+            alt="save"
+            width={20}
+            height={20}
+          />
+        </Button>
+      )}
     </div>
   );
 };

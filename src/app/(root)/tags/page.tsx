@@ -10,12 +10,12 @@ const TagsPage = async () => {
   const { tags } = await getAllTags({});
   return (
     <div>
-      <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="flex w-full flex-col-reverse justify-between gap-2 sm:flex-row sm:items-center">
         <div className="text-center">
-          <h1 className="h1-bold text-dark100_light900">All Users</h1>
+          <h1 className="h1-bold text-dark100_light900">All Tags</h1>
         </div>
       </div>
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
+      <div className="mt-3 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearch
           route="/community"
           placeholder={"Search by username....."}
@@ -26,7 +26,7 @@ const TagsPage = async () => {
           containerClasses="flex"
         />
       </div>
-      <div className="mt-10 flex w-full flex-col gap-6">
+      <div className="mt-10 flex w-full flex-wrap items-center justify-center gap-3">
         {tags.length > 0 ? (
           tags.map((tag) => <TagCard key={tag._id} tag={tag} />)
         ) : (

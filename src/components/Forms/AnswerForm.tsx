@@ -20,10 +20,10 @@ import { Button } from "../ui/button";
 
 const AnswerForm = ({
   questionId,
-  mongoUserId,
+  userId: mongoUserId,
 }: {
   questionId: string;
-  mongoUserId: string;
+  userId: string;
 }) => {
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);

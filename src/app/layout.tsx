@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { ThemeProvider } from "@/context/ThemeProvider";
+import { cn } from "@/lib/utils";
 import "@/styles/prism.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
@@ -30,7 +31,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${spackeGrotesk.className}`}>
+      <body
+        className={cn(inter.className, spackeGrotesk.className, "no-scrollbar")}
+      >
         <ClerkProvider
           appearance={{
             elements: {

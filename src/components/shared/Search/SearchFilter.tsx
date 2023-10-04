@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { Filter } from "@/types";
-import Link from "next/link";
 
 const SearchFilter = ({
   filters,
@@ -43,11 +42,9 @@ const SearchFilter = ({
         >
           <SelectGroup>
             {filters.map((item) => (
-              <Link key={item.value} href="">
-                <SelectItem key={item.value} value={item.value} className="">
-                  {item.name}
-                </SelectItem>
-              </Link>
+              <SelectItem key={item.value} value={item.value} className="">
+                {item.name}
+              </SelectItem>
             ))}
           </SelectGroup>
         </SelectContent>

@@ -19,7 +19,12 @@ const LocalSearchbar = ({
   placeholder,
   otherClasses,
 }: CustomInputProps) => {
+  // const [mounted, setMounted] = useState(false);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
   return (
+    // mounted ??
     <div
       className={cn(
         "background-light800_darkgradient flex min-h-[56px] grow items-center gap-4 rounded-[10px] px-4",
